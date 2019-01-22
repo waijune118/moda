@@ -33,3 +33,4 @@ WORKDIR /app
 ENTRYPOINT ["/bin/bash"]
 EXPOSE 80
 CMD ["initdb.sh"]
+RUN npm start
