@@ -31,6 +31,6 @@ RUN npm install
 USER root
 WORKDIR /app
 ENTRYPOINT ["/bin/bash"]
-EXPOSE 80
 CMD ["initdb.sh"]
-RUN npm start
+EXPOSE 80
+CMD ["npm", "start"]
