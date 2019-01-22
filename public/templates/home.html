@@ -1,0 +1,59 @@
+<!-- <div id="tagline">
+	<div id="maintagline">THE EUROPEAN MATERIALS MODELLING COUNCIL</div>
+</div> -->
+<div class="sectionContainer">
+	<div class="sectionContent">
+		<div class="subsectionContainer">
+			<div class="sectionHeader">
+				<div style="flex-grow: 1">
+					<span class="customBtn cancelBtn" id="dashboardBtn">MODA Dashboard For: {{user.name}}</span>
+				</div>
+				<div>
+					<button class="customBtn editHeadBtn" ng-click="go('/newmoda')">CREATE MODA</button>
+				</div>
+			</div>
+			<div class="subsectionContent">
+				<div ng-if="modas.length == 0">
+					NO MODAS AVAILABLE
+				</div>
+				<div id="modasList">
+					<div class="listItemV" id="modaItem{{moda.id}}" ng-if="modas.length > 0" ng-repeat="moda in modas track by $index" ng-if="!moda.deleted">
+						<div class="listItemLeftRight">
+							<div class="listItemLeft">
+								<div><span class="grayText">TITLE:</span> {{moda.data.usecase_title}}</div>
+								<div><span class="grayText">PROJECT:</span> {{moda.data.project_name}}</div>
+								<div><span class="grayText">STATUS:</span> IN DEVELOPMENT</div>
+								<div class="listSubItem">
+									<div><span class="grayText">AUTHOR:</span> {{moda.user_name}} </div>
+									<div class="listItemDetail">
+										<span class="grayText">COLLABORATORS:</span> <span ng-repeat="collab in moda.collaborators.list | limitTo: 3"> {{collab.name}}  <span> | </span> </span> <span ng-if="moda.collaborators.list.length > 3"> ... </span>
+										<span class="clickableDetailContainer" ng-click="showCollabDialog($event, $index)"><i class="far fa-edit changeModaBtn"></i></span>
+									</div>
+								</div>
+								<div class="blankseparator"></div>
+								<div class="listSubItem" style="font-size: 0.9em">
+									<div><span class="grayText" ng-if="moda.data.isCopied">COPIED</span></div>
+									<div><span class="grayText">CREATED:</span> {{moda.date_added  | date:'dd/MM/yyyy HH:mm'}}</div>
+									<div class="listItemDetail"><span class="grayText">ID:</span> {{moda.id}}</div>
+								</div>
+							</div>
+							<div class="listSubItemE">
+								<!--
+								<div class="deleteDivBtn listItemDetail" ng-click="deleteModa($index)" ng-if="!moda.deleted">[MARK AS DELETED]</div>
+								<div class="disabledDiv listItemDetail" ng-if="moda.deleted">[MARKED AS DELETED]</div>
+								-->
+								<div class="divBtn listItemDetail changeModaBtn"><a href="modas/view/{{moda.id}}">[VIEW]</a></div>
+								<div class="divBtn listItemDetail changeModaBtn"><a href="modas/{{moda.id}}">[EDIT]</a></div>
+								<div class="divBtn listItemDetail changeModaBtn" ng-click="copyModa($index)">[COPY]</div>
+								<div class="deleteDivBtn listItemDetail changeModaBtn" ng-click="showDeleteModaDialog($event, $index)">[DELETE]</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="loadMoreBtn" ng-if="modas.length > 0" ng-click="loadMoreModas()" ng-class="{'disabledDiv' : fetchedAllModas}">
+					LOAD MORE
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

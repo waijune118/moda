@@ -1,0 +1,335 @@
+<head>
+  <link rel="stylesheet" href="css/printview.css" type="text/css" media="print">
+</head>
+<div class="sectionContainer">
+    <div class="sectionContent">
+        <div class="subsectionContainer">
+            <div class="sectionHeader stickyHeader" style="background: white">
+                <div style="flex-grow: 1">
+                    <button class="customBtn cancelBtn editHeadBtn" ng-click="go('/')">&larrb; MODA DASHBOARD</button>
+                </div>
+                <div>
+                  <button class="customBtn exportBtn editHeadBtn" ng-disabled="printDisabled" ng-click="exportPdf()">PRINT/EXPORT</button>
+              </div>
+              <div>
+                  <button class="customBtn editHeadBtn" ng-click="go('edit')">EDIT</button>
+              </div>
+          </div>
+          <div class="subsectionContent">
+            <div class="inputwrapper">
+                <div class="inputlabel mainSectionTitle">
+                    <span id="viewmoda">VIEW MODA</span>
+                </div>
+
+                <div class="subinputwrapper">
+                    <div class="inputlabel">USER CASE:</div>
+                    <div class="datafield"> {{modaData.usecase_title}} </div>
+                </div>
+
+                <div class="subinputwrapper">
+                    <div class="inputlabel">PROJECT (NAME/ACRONYM):</div>
+                    <div class="datafield"> {{modaData.project_name}} </div>
+                </div>
+                <div class="subinputwrapper">
+                    <div class="mainSectionSubTitle">
+                        <span>OVERVIEW OF THE SIMULATION</span>
+                    </div>
+                    <div class="genericleftborder">
+                        <div class="subinputwrapper">
+                            <div class="inputlabel">DESCRIPTION:</div>
+                            <div class="datafield"> {{modaData.simulation_overview.usecase_desc}} </div>
+                        </div>
+                        <div class="subinputwrapper">
+                            <div class="inputlabel">PUBLICATION(S) PEERREVIEWING THE SIMULATION:</div>
+                            <div class="datafield"> {{modaData.simulation_overview.publications_peer}} </div>
+                        </div>
+                        <div class="subinputwrapper">
+                            <div class="inputlabel">ACCESS CONDITIONS:</div>
+                            <div class="datafield"> {{modaData.simulation_overview.access_conditions}} </div>
+                        </div>
+                        <div class="subinputwrapper nomarginbtm">
+                            <div class="inputlabel">WORKFLOW AND ITS RATIONALE:</div>
+                            <div class="datafield"> {{modaData.simulation_overview.workflow_rationale}} </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subinputwrapper">
+                    <div class="mainSectionSubTitle">
+                        <span>MODELS</span>
+                    </div>
+                    <div class="subinputwrapper genericleftborder">
+                        <div class="entityWrapper" ng-repeat="model in modaData.models track by $index">
+                            <div class="hContent modelStickyHeader">
+                                <div>
+                                    <span><b>MODEL {{$index+1}}</b></span>
+                                </div>
+                            </div>
+                            <div class="inputwrapperH">
+                                <div class="inputlabel autoWidth"><b>LINKED</b> TO MODEL(S): &nbsp;
+                                {{model.link_to_models}} </div>
+                            </div>
+                            <div class="inputwrapperH">
+                                <div class="inputlabel autoWidth"><b>COUPLED</b> TO MODEL(S): &nbsp;
+                                {{model.couple_to_models}} </div>
+                            </div>
+
+                            <div>
+                              <div class="inputwrapper">
+                                  <div class="inputlabel" style="padding-top: 20px;">MODEL NAME:</div>
+                                  <div class="datafield"> {{model.name}} </div>
+                              </div>
+                              <div class="inputwrapper">
+                                <div class="mainSectionSubSubTitle aspectbg sectionStickyHeader">
+                                    <span>1. ASPECT OF THE USER CASE/SYSTEM TO BE SIMULATED</span>
+                                </div>
+                                <div class="subinputwrapper aspectleftborder">
+                                    <div class="inputwrapper">
+                                        <div class="inputlabel">ASPECT TO BE SIMULATED:</div>
+                                        <div class="datafield"> {{model.simulation_aspect.aspect}} </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="inputlabel">MATERIAL:</div>
+                                        <div class="datafield"> {{model.simulation_aspect.material}} </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="inputlabel">GEOMETRY:</div>
+                                        <div class="datafield"> {{model.simulation_aspect.geomtry}} </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="inputlabel">TIME LAPSE:</div>
+                                        <div class="datafield"> {{model.simulation_aspect.time_lapse}} </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="inputlabel">MANUFACTURING PROCESS OR IN-SERVICE CONDITIONS:</div>
+                                        <div class="datafield"> {{model.simulation_aspect.manufacturing_process_conditions}} </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="inputlabel">USER CASE INPUT (DISPLAYED IN WORKFLOW):</div>
+                                        <div class="datafield"> {{model.simulation_aspect.user_case_input}} </div>
+                                    </div>
+                                    <div class="inputwrapper nomarginbtm">
+                                        <div class="inputlabel">PUBLICATION(S) ON THIS DATA:</div>
+                                        <div class="datafield"> {{model.simulation_aspect.publications}} </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inputwrapper">
+                                <div class="mainSectionSubSubTitle genphysicsbg sectionStickyHeader">
+                                    <span>2. GENERIC PHYSICS OF THE MODEL EQUATION</span>
+                                </div>
+                                <div class="genphysicsleftborder">
+                                    <div class="subinputwrapper">
+                                        <div class="inputlabel sub1SectionStickyHeader"><b>PHYSICS EQUATIONS</b></div>
+                                        <div class="subinputwrapper">
+                                            <div class="entityWrapper lighterBtmBorder" ng-repeat="physicseq_set in model.physicseq_sets track by $index">
+                                                <div class="inputlabel sub2SectionStickyHeader" style="margin-bottom: 20px;">
+                                                    <span>EQUATION SET {{$index+1}}</span>
+                                                </div>
+                                                <div>
+                                                    <div class="subinputwrapper">
+                                                        <div class="inputwrapper">
+                                                            <div class="inputlabel">MAIN TYPE:</div>
+                                                            <div class="datafield">{{physicseq_set.type.name}} </div>
+                                                        </div>
+                                                        <div class="inputwrapper">
+                                                            <div class="inputlabel">SUBTYPE 1:</div>
+                                                            <div class="datafield">{{physicseq_set.subtype_1.name}} </div>
+                                                        </div>
+                                                        <div class="inputwrapper">
+                                                            <div class="inputlabel">ETITY:</div>
+                                                            <div class="datafield">{{physicseq_set.entity}} </div>
+                                                        </div>
+                                                        <div class="inputwrapper">
+                                                            <div class="inputlabel">MODEL (EQUATION SET) NAME:</div>
+                                                            <div class="datafield">{{physicseq_set.name}} </div>
+                                                        </div>
+                                                        <div class="inputwrapper">
+                                                            <div class="inputlabel">MODEL (EQUATION SET) DESCRIPTION:</div>
+                                                            <div class="datafield">{{physicseq_set.description}} </div>
+                                                        </div>
+                                                        <div class="inputwrapper">
+                                                            <div class="inputlabel"><span><b>EQUATIONS:</b></div>
+                                                                <div class="subinputwrapper">
+                                                                    <div class="entityWrapper lighterBtmBorder" ng-repeat="physicseq in physicseq_set.equations track by $index">
+                                                                        <div class="inputlabel sub3SectionStickyHeader" style="margin-bottom: 20px;">
+                                                                            <span>EQUATION {{$index+1}}</span>
+                                                                        </div>
+                                                                        <div class="subinputwrapper">
+                                                                            <div class="inputwrapper">
+                                                                                <div class="inputlabel">EQUATION PREVIEW:</div>
+                                                                                <div class="setValue" mathjax-bind="physicseq.mathml_tex_equation"></div>
+                                                                            </div>
+                                                                            <div class="inputwrapper">
+                                                                                <div class="inputlabel"><span>PHYSICS QUANTITIES</div>
+                                                                                    <div class="subinputwrapper">
+                                                                                        <div class="entityWrapper lighterBtmBorder" ng-repeat="physicsquant in physicseq.physics_quantities">
+                                                                                            <div class="inputlabel sub4SectionStickyHeader" style="margin-bottom: 20px;">
+                                                                                                <span>QUANTITY {{$index+1}}</span>
+                                                                                            </div>
+                                                                                            <div class="subinputwrapper">
+                                                                                                <div class="inputwrapper">
+                                                                                                    <div class="inputlabel">NAME:</div>
+                                                                                                    <div class="setValue" mathjax-bind="physicsquant.name"></div>
+                                                                                                </div>
+                                                                                                <div class="inputwrapper">
+                                                                                                    <div class="inputlabel">SYMBOL:</div>
+                                                                                                    <div class="setValue" mathjax-bind="physicsquant.math_symbol"></div>
+                                                                                                </div>
+                                                                                                <div class="inputwrapper">
+                                                                                                    <div class="inputlabel">DESCRIPTION:</div>
+                                                                                                    <div class="setValue" mathjax-bind="physicsquant.description"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="subinputwrapper nomarginbtm">
+                                                <div class="inputlabel sub1SectionStickyHeader"><b>MATERIALS RELATIONS</b></div>
+                                                <div class="subinputwrapper">
+                                                    <div class="entityWrapper lighterBtmBorder" ng-repeat="materialrel in model.materials_relations track by $index">
+                                                        <div class="inputlabel sub2SectionStickyHeader" style="margin-bottom: 20px;">
+                                                            <span>RELATION {{$index+1}}</span>
+                                                        </div>
+                                                        <div>
+                                                            <div class="subinputwrapper">
+                                                                <div class="inputwrapper">
+                                                                    <div class="inputlabel">NAME:</div>
+                                                                    <div class="datafield"> {{materialrel.name}} </div>
+                                                                </div>
+                                                                <div class="inputwrapper">
+                                                                    <div class="inputlabel">DESCRIPTION:</div>
+                                                                    <div class="datafield"> {{materialrel.description}} </div>
+                                                                </div>
+                                                                <div class="inputwrapper">
+                                                                    <div class="inputlabel">EQUATION PREVIEW:</div>
+                                                                    <div class="setValue" mathjax-bind="materialrel.mathml_tex_equation"></div>
+                                                                </div>
+                                                                <div class="inputwrapper">
+                                                                    <div class="inputlabel sub3SectionStickyHeader">PHYSICS QUANTITIES</div>
+                                                                    <div class="subinputwrapper">
+                                                                        <div class="entityWrapper lighterBtmBorder" ng-repeat="matquant in materialrel.material_quantities">
+                                                                            <div class="inputlabel" style="margin-bottom: 20px;">
+                                                                                <span><b>QUANTITY {{$index+1}}</b></span>
+                                                                            </div>
+                                                                            <div>
+                                                                                <div class="inputwrapper">
+                                                                                    <div class="inputlabel">NAME:</div>
+                                                                                    <div class="datafield"> {{matquant.name}} </div>
+                                                                                </div>
+                                                                                <div class="inputwrapper">
+                                                                                    <div class="inputlabel">MATH SYMBOL:</div>
+                                                                                    <div class="setValue" mathjax-bind="matquant.math_symbol"></div>
+                                                                                </div>
+                                                                                <div class="inputwrapper">
+                                                                                    <div class="inputlabel">DESCRIPTION:</div>
+                                                                                    <div class="datafield"> {{matquant.description}} </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="inputsublabel">
+                                                    The simulated input is an output of another model, as defined in the workflow.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="mainSectionSubSubTitle solverbg solverbgview sectionStickyHeader">
+                                            <span>3. SOLVER AND COMPUTATIONAL TRANSLATION OF THE SPECIFICATIONS</span>
+                                        </div>
+                                        <div class="subinputwrapper solverleftborder">
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">NUMERICAL SOLVER:</div>
+                                                <div class="datafield"> {{model.solver_comp_translation.numerical_solver}} </div>
+                                            </div>
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">SOFTWARE TOOL:</div>
+                                                <div class="datafield"> {{model.solver_comp_translation.software_tool}} </div>
+                                            </div>
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">TIME STEP:</div>
+                                                <div class="datafield"> {{model.solver_comp_translation.time_step}} </div>
+                                            </div>
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">COMPUTATIONAL REPRESENTATION</div>
+                                                <div class="subinputwrapper">
+                                                    <div class="inputwrapper">
+                                                        <div class="inputlabel">PHYSICS EQUATION:</div>
+                                                        <div class="datafield"> {{model.solver_comp_translation.computational_representation.physics_equation}} </div>
+                                                    </div>
+                                                    <div class="inputwrapper">
+                                                        <div class="inputlabel">MATERIAL RELATIONS:</div>
+                                                        <div class="datafield"> {{model.solver_comp_translation.computational_representation.material_relations}} </div>
+                                                    </div>
+                                                    <div class="inputwrapper nomarginbtm">
+                                                        <div class="inputlabel">MATERIAL:</div>
+                                                        <div class="datafield"> {{model.solver_comp_translation.computational_representation.material}} </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">COMPUTATIONAL BOUNDARY CONDITIONS:</div>
+                                                <div class="datafield"> {{model.solver_comp_translation.computational_boundary_conditions}} </div>
+                                            </div>
+                                            <div class="inputwrapper nomarginbtm">
+                                                <div class="inputlabel">ADDITIONAL SOLVER PARAMETERS:</div>
+                                                <div class="datafield"> {{model.solver_comp_translation.additional_solver_params}} </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="inputwrapper">
+                                        <div class="mainSectionSubSubTitle postprocessbg sectionStickyHeader">
+                                            <span>4. POST PROCESSING</span>
+                                        </div>
+                                        <div class="subinputwrapper postprocessleftborder">
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">THE PROCESSED OUTPUT:</div>
+                                                <div class="datafield"> {{model.post_processing.processed_output}} </div>
+                                            </div>
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">METHODOLOGIES:</div>
+                                                <div class="datafield"> {{model.post_processing.methodologies}} </div>
+                                            </div>
+                                            <div class="inputwrapper">
+                                                <div class="inputlabel">MARGIN OF ERROR:</div>
+                                                <div class="datafield"> {{model.post_processing.error_margin}} </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subinputwrapper workflow">
+                    <div class="mainSectionSubTitle">
+                        <span>MODA WORKFLOW PLOT</span>
+                    </div>
+                    <div class="subinputwrapper genericleftborder">
+                        <div>
+                          <span style="font-weight: 300; font-size: 13px"><u>Note:</u> long text may not be displayed in full</span>
+                      </div>
+                      <div id="graphVizContainer">WORKFLOW PLOT WILL BE GENERATED HERE AS YOU ADD AND CONNECT (LINK/COUPLE) MODELS</div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

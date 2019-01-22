@@ -1,0 +1,22 @@
+<div class="sectionContainer">
+    <div class="sectionContent">
+        <div class="subsectionContainer">
+            <div class="subsectionContent">
+                <form name="accountForm" id="accountForm">
+                    <div class="mainSectionSubTitle" id="emmc-connected">
+                        <span>Connected to emmc.info Account</span>
+                    </div>
+                    
+                    <div class="inputwrapper">
+                        <div class="inputlabel">EMAIL:</div>
+                        <div class="inputVal" ng-if="!editMode" class="subsectionDetailContent">{{user.email}}</div>
+                    </div>
+                    <div class="inputwrapper">
+                        <div class="inputlabel">FULL NAME:</div>
+                        <div class="inputVal" ng-if="!editMode" class="subsectionDetailContent">{{user.name}}</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

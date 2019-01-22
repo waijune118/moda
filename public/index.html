@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="app" xmlns:mml="http://www.w3.org/1998/Math/MathML">
+
+<head>
+    <base href="/moda/">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EMMC MODA Portal</title>
+    <meta name="description" content="The European Materials Modelling Council — EMMC" />
+    <meta name="og:title" content="The European Materials Modelling Council — EMMC" />
+    <meta name="og:description" content="The European Materials Modelling Council — EMMC" />
+    <meta name="og:image" content="https://data1.iwm.fraunhofer.de/moda/img/logo.jpg" />
+    <meta name="robots" content="follow, index" />
+    <meta name="msapplication-config" content="bld/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" sizes="256x256" href="favicon.png" />
+    <link rel="icon" type="image/png" sizes="256x256" href="bld/favicon.png" />
+    <link rel="manifest" href="bld/manifest.json" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/_lib/angular-material.css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      MathML: {
+      extensions: ["content-mathml.js"]
+  },
+  tex2jax: {
+  inlineMath: [['$','$'], ['\\(','\\)']]
+}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script type="text/javascript" src="js/_lib/jquery.js"></script>
+<script type="text/javascript" src="js/_lib/angular.js"></script>
+<script type="text/javascript" src="js/_lib/angular-aria.js"></script>
+<script type="text/javascript" src="js/_lib/angular-animate.js"></script>
+<script type="text/javascript" src="js/_lib/angular-messages.js"></script>
+<script type="text/javascript" src="js/_lib/angular-material.js"></script>
+<script type="text/javascript" src="js/_lib/angular-sanitize.js"></script>
+<script type="text/javascript" src="js/_lib/angular-route.js"></script>
+<script type="text/javascript" src="js/_lib/angular-cookies.js"></script>
+<script type="text/javascript" src="js/_lib/clipboard.min.js"></script>
+<script defer src="js/_lib/fontawesome-all.js"></script>
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="moda/js/_lib/viz-lite.js" type="javascript/worker"></script>
+<script src="js/_lib/d3-graphviz.js"></script>
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/services/home.js"></script>
+<script type="text/javascript" src="js/services/auth.js"></script>
+<script type="text/javascript" src="js/services/users.js"></script>
+<script type="text/javascript" src="js/services/modas.js"></script>
+<script type="text/javascript" src="js/controllers/main.js"></script>
+<script type="text/javascript" src="js/controllers/login.js"></script>
+<script type="text/javascript" src="js/controllers/register.js"></script>
+<script type="text/javascript" src="js/controllers/home.js"></script>
+<script type="text/javascript" src="js/controllers/account.js"></script>
+<script type="text/javascript" src="js/controllers/moda.js"></script>
+<script type="text/javascript" src="js/controllers/modaview.js"></script>
+<script type="text/javascript" src="js/controllers/about.js"></script>
+<script type="text/javascript" src="js/directives/main.js"></script>
+</head>
+
+<body class="vbox viewport" ng-controller="mainCtrl">
+    <header>
+        <div class="headerRow">
+            <div c-activate="logo" id="logo">
+                <a href="https://emmc.info" target="_blank"><img src="img/logo.jpg" alt="emmc logo" height="80" width="80"></a>
+                <!-- <div id="verticalSep"></div> -->
+            </div>
+            <div id="headerTitle">
+                <div>
+                    The European Materials Modelling Council
+                </div>
+                <div style="font-size: 0.9em !important;" class="lightMonoFont">
+                    MODA Portal [Release Candidate 1.0]
+                </div>
+            </div>
+            <div c-activate="logo" id="rightLogo">
+                <a href="/moda/"><img src="img/portal_logo.png" alt="moda portal logo" height="80" width="80"></a>
+            </div>
+        </div>
+        <div class="headerRow subHeader">
+            <div id="toolbar">
+                <div class="toolbarBtn" ng-if="loggedin"><a href="/moda/"><h5 id="homeBtn" c-activate="toolbar">MODA DASHBOARD</h5></a></div>
+                <div class="toolbarBtn" ng-if="loggedin"><a href="account"><h5 id="accountBtn" c-activate="toolbar">ACCOUNT</h5></a></div>
+                <div class="toolbarBtn" ng-if="!loggedin"><a href="login"><h5 id="loginBtn" c-activate="toolbar">LOGIN</h5></a></div>
+                <div class="toolbarBtn"><a href="https://emmc.info/how-to-use-the-moda-app/" target="_blank" title="How to Use the Moda-App"><h5 c-activate="toolbar">HELP</h5></a></div>
+                <div class="toolbarBtn" ng-if="loggedin"><a href="" ng-click="logout()"><h5>LOGOUT</h5></a></div>
+            </div>
+        </div>
+    </header>
+    <div id="loadingMsg" ng-if="showLoading">LOADING...</div>
+    <div id="errMsg" ng-if="showErr">{{errMsg}}</div>
+    <div id="regMsg" ng-if="showMsg">{{regMsg}}</div>
+    <div class="container space-between" ng-view>
+    </div>
+    <footer>
+        <div id="contact">
+            <span><a href="https://emmc.info/emmc-contact-form/" target="_blank"><h5>CONTACT</h5></a></span> /
+            <span><a href="mailto:info@emmc.info"><h5>EMAIL</h5></a></span>
+        </div>
+        <div id="about">
+            <div class="footerBtn"><h5 id="aboutBtn" c-activate="toolbar"><a href="about">ABOUT</a></h5></div>
+        </div>
+        <div id="copyright"><span id="copyrightsign">&copy;</span> EMMC</div>
+    </footer>
+</body>
+
+</html>

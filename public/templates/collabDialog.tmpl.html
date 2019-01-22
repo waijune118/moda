@@ -1,0 +1,32 @@
+<md-dialog aria-label="collaborators">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>COLLABORATORS</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <md-contact-chips
+      ng-model="ctrl.collaborators"
+      md-contacts="collabSearch($query)"
+      md-contact-name="name"
+      md-contact-image="image"
+      md-require-match="true"
+      md-highlight-flags="i"
+      filter-selected="true"
+      placeholder="SEARCH"
+      secondary-placeholder="SEARCH">
+    </md-contact-chips>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row">
+    <md-button ng-click="save()">
+      SAVE
+    </md-button>
+    <md-button ng-click="cancel()">
+     CANCEL
+   </md-button>
+ </md-dialog-actions>
+</form>
+</md-dialog>

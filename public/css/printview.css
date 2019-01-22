@@ -1,0 +1,217 @@
+html {
+  -webkit-text-size-adjust: none;
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  display: block;
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  display: block;
+}
+
+.datafield {
+  display: block;
+  height: auto;
+  overflow: visible;
+  page-break-inside: avoid;
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+.mainSectionSubTitle {
+  margin-bottom: 10px;
+}
+
+.mainSectionSubSubTitle {
+  margin-bottom: 10px;
+}
+
+.inputwrapper {
+  margin-bottom: 0px;
+
+}
+
+.inputlabel {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.stickyHeader {
+  position: static;
+}
+
+.modelStickyHeader {
+  position: static;
+}
+
+.sectionStickyHeader {
+  position: static;
+}
+
+.sub1SectionStickyHeader {
+  position: static;
+}
+
+.sub2SectionStickyHeader {
+  position: static;
+}
+
+.sub3SectionStickyHeader {
+  position: static;
+}
+
+.inputwrapper{
+  display: block;
+}
+
+.inputwrapperH{
+  display: block;
+}
+
+.subinputwrapper{
+  display: block;
+  padding: 0px;
+  margin: 0px;
+}
+
+.genericleftborder {
+  border-left: 0px;
+}
+
+.entityWrapper{
+  display: block;
+}
+
+.sectionContainer {
+  display: block;
+}
+
+.sectionHeader {
+  display: block;
+}
+
+.sectionHeaderBtns {
+  display: block;
+}
+
+.sectionContent {
+  display: block;
+}
+
+.subsectionContainer {
+  display: block;
+}
+
+.subsectionContent {
+  display: block;
+}
+
+.subsectionControls {
+  display: block;
+}
+
+.listSection {
+  display: block;
+}
+
+.listItemH {
+  display: block;
+}
+
+.listItemV {
+  display: block;
+}
+
+.listSubItem {
+  display: block;
+}
+
+.listSubItemE {
+  display: block;
+}
+
+.container {
+  display: block;
+}
+
+.headerRow {
+  display: inline-block;
+}
+
+.exportBtn, .sectionHeader, #toolbar, #contact, #about, #viewmoda {
+  display: none !important;
+}
+
+.genericleftborder, .aspectleftborder, .genphysicsleftborder, .solverleftborder, .postprocessleftborder {
+  border-left: none;
+}
+
+.entityWrapper, .lighterBtmBorder, .sub1SectionStickyHeader, .modelStickyHeader, .sub2SectionStickyHeader, .sub3SectionStickyHeader {
+  border-bottom: none;
+}
+
+.modelStickyHeader {
+  border-top: 3px solid black;
+}
+
+.inputwrapperH {
+  padding: 0px;
+  margin: 0px;
+}
+
+.inputsublabel {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#graphVizContainer {
+  page-break-inside: avoid;
+  display: block;
+  border: none;
+  overflow: visible;
+}
+
+#graphVizContainer svg {
+  width: 710pt;
+  height: 238pt;
+}
+
+#accountPostings {
+  display: block;
+}
+
+#logo {
+  float: left;
+  width: 20%;
+  margin-right: 2%;
+  padding: 20px;
+  box-sizing: border-box;
+  padding-bottom: 0px;
+}
+
+#headerTitle {
+  float: left;
+  width: 56%;
+  margin-right: 2%;
+  padding: 20px;
+  box-sizing: border-box;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+#rightLogo {
+  float: left;
+  width: 20%;
+  margin-right: 2%;
+  padding: 20px;
+  padding-bottom: 0px;
+  box-sizing: border-box;
+  margin-right: 0;
+}
