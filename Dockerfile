@@ -33,4 +33,4 @@ WORKDIR /app
 ENTRYPOINT ["/bin/bash"]
 CMD ["initdb.sh"]
 EXPOSE 80
-CMD ["npm", "start"]
+
