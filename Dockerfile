@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-RUN mkdir /app && chown postgres:postgres /app
+RUN mkdir /app
 COPY . app
 WORKDIR /app
 
