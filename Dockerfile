@@ -12,13 +12,12 @@ RUN mkdir /app && chown postgres:postgres /app
 COPY . app
 WORKDIR /app
 
-ENV root_url= 'ROOT URL:' 
-ENV db_pass= 'DB USER PASSWORD:'
-ENV session_secret= 'SESSIONS SECRET (RANDOM STRING):' 
-ENV port= 'PORT'
-ENV consumer_key= 'WP API CONSUMER KEY:' 
-ENV consumer_secret= 'WP API CONSUMER SECRET:' 
-
+ENV root_url moda
+ENV db_pass secret
+ENV port 5000
+ENV session_secret ssecret
+ENV consumer_key ckey
+ENV consumer_secret csecret
 
 RUN sed -i "s/moda_root_url/$root_url/g" public/index.html \
   && sed -i "s/moda_root_url/$root_url/g" public/js/app.js \
