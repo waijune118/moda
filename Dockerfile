@@ -35,6 +35,7 @@ USER root
 WORKDIR /app
 ENTRYPOINT ["/bin/bash"]
 CMD ["initdb.sh"]
+CMD ["install.sh"]
 
 EXPOSE 80
 CMD ["npm", "start"]
