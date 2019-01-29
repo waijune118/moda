@@ -29,7 +29,7 @@ USER postgres
 WORKDIR /app
 RUN npm i
 
-RUN sudo bash -c "echo -e \"MODE=prod\nSECRET_KEY=$session_secret\nCONSUMER_KEY=$consumer_key\nCONSUMER_SECRET=$consumer_secret\nROOT_URL=$root_url\nDB_PASS=$db_pass\nAPP_PORT=$port\" > .env"
+RUN bash -c "echo -e \"MODE=prod\nSECRET_KEY=$session_secret\nCONSUMER_KEY=$consumer_key\nCONSUMER_SECRET=$consumer_secret\nROOT_URL=$root_url\nDB_PASS=$db_pass\nAPP_PORT=$port\" > .env"
 
 USER root
 WORKDIR /app
