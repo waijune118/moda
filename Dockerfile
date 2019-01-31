@@ -11,6 +11,8 @@ RUN mkdir /app && chown postgres:postgres /app
 COPY . app
 WORKDIR /app
 
+USER postgres
+RUN npm i
 
 CMD ["initdb.sh"]
 CMD ["install.sh"]
