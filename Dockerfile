@@ -14,7 +14,9 @@ WORKDIR /app
 USER postgres
 RUN npm i
 
-RUN ./install.sh
+ADD install.sh /moda-app/install.sh
+CMD [./install.sh]
+
 
 EXPOSE 80
 CMD ["npm", "start"]
