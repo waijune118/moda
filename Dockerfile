@@ -14,8 +14,8 @@ WORKDIR /app
 USER postgres
 RUN npm i
 
-ADD install.sh /moda-app/install.sh
-CMD [./install.sh]
+RUN chmod +x /moda-app/install.sh
+RUN /moda-app/install.sh
 
 
 EXPOSE 80
