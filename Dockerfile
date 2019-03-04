@@ -14,6 +14,8 @@ WORKDIR /app
 USER postgres
 RUN npm i
 
+USER root
+WORKDIR /app
 RUN ["chmod", "+x", "/app/install.sh"]
 RUN ["/app/install.sh"]
 
