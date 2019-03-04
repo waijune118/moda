@@ -13,13 +13,13 @@ sudo apt-get autoremove -y
 
 git clone https://data1.iwm.fraunhofer.de/gogs/suhail/moda-app.git
 
-read -p 'ROOT URL: ' root_url
-read -sp 'DB USER PASSWORD: ' db_pass
+root_url = ''
+db_pass = '123456'
 echo
-read -p 'SESSIONS SECRET (RANDOM STRING): ' session_secret
-read -p 'PORT: ' port
-read -p 'WP API CONSUMER KEY: ' consumer_key
-read -p 'WP API CONSUMER SECRET: ' consumer_secret
+session_secret = '&b\x98\xb9\x87jl\xf5\xe9\xe1h\x9d\x177x\x97\x8e\xe9\x8b\xc9O\xd7\x9b\x0f'
+port = '3000'
+consumer_key = 'K1ITZ0Jh6ZBG'
+consumer_secret = 'Q1da28SpvDKueYHzc3JmkoHQKtKyIhGvGLFjDE3r9SOKr0Zx'
 
 cd moda-app
 
