@@ -13,13 +13,13 @@ sudo apt-get autoremove -y
 
 git clone https://data1.iwm.fraunhofer.de/gogs/suhail/moda-app.git
 
-root_url = ''
-db_pass = '123456'
+root_url = ""
+db_pass = "123456"
 echo
-session_secret = '&b\x98\xb9\x87jl\xf5\xe9\xe1h\x9d\x177x\x97\x8e\xe9\x8b\xc9O\xd7\x9b\x0f'
-port = '3000'
-consumer_key = 'K1ITZ0Jh6ZBG'
-consumer_secret = 'Q1da28SpvDKueYHzc3JmkoHQKtKyIhGvGLFjDE3r9SOKr0Zx'
+session_secret = "&b\x98\xb9\x87jl\xf5\xe9\xe1h\x9d\x177x\x97\x8e\xe9\x8b\xc9O\xd7\x9b\x0f"
+port = "3000"
+consumer_key = "K1ITZ0Jh6ZBG"
+consumer_secret = "Q1da28SpvDKueYHzc3JmkoHQKtKyIhGvGLFjDE3r9SOKr0Zx"
 
 cd moda-app
 
