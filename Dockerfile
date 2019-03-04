@@ -13,8 +13,8 @@ WORKDIR /app
 
 USER postgres
 RUN npm i
-CMD ["initdb.sh"]
-CMD ["install.sh"]
+
+RUN ./install.sh
 
 EXPOSE 80
 CMD ["npm", "start"]
