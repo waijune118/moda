@@ -8,7 +8,7 @@ RUN apt-get update \
 RUN npm install -g pm2
 
 RUN mkdir /app && chown postgres:postgres /app
-COPY . app
+COPY . /app
 WORKDIR /app
 
 USER postgres
