@@ -11,16 +11,16 @@ RUN mkdir /app && chown postgres:postgres /app
 COPY . /app
 WORKDIR /app
 
-USER postgres
+
 RUN npm i
 
 USER root
 WORKDIR /app
-RUN ["chmod", "+x", "/app/install.sh"]
-RUN ["/app/install.sh"]
+RUN ["sudo", "chmod", "+x", "/app/install.sh"]
+RUN ["sudo", "/app/install.sh"]
 
 
-
+USER postgres
 EXPOSE 80
 CMD ["npm", "start"]
 
