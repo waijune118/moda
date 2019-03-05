@@ -11,21 +11,23 @@ sudo npm install -g pm2
 
 sudo apt-get autoremove -y
 
-git clone https://data1.iwm.fraunhofer.de/gogs/suhail/moda-app.git
+git clone https://Jun:123456@data1.iwm.fraunhofer.de/gogs/suhail/moda-app.git
 
 root_url=""
 db_pass=123456
-echo
-session_secret=&b\x98\xb9\x87jl\xf5\xe9\xe1h\x9d\x177x\x97\x8e\xe9\x8b\xc9O\xd7\x9b\x0f
+session_secret="&b\x98\xb9\x87jl\xf5\xe9\xe1h\x9d\x177x\x97\x8e\xe9\x8b\xc9O\xd7\x9b\x0f"
 port=3000
 consumer_key=K1ITZ0Jh6ZBG
 consumer_secret=Q1da28SpvDKueYHzc3JmkoHQKtKyIhGvGLFjDE3r9SOKr0Zx
 
-cd moda-app
+sudo groupadd --gid 5555 ubuntu
+sudo useradd --uid 1111 --gid ubuntu --shell /bin/bash -m ubuntu
 
-sudo -u postgres psql -c "CREATE USER ubuntu WITH PASSWORD '$db_pass';"
-sudo -u postgres bash -c "createdb modadb"
-sudo -u ubuntu psql -d modadb -c "CREATE TABLE modas (
+cd moda-app
+sudo service postgresql start &&\
+sudo -u postgres psql -c "CREATE USER ubuntu WITH PASSWORD '$db_pass';" &&\
+sudo -u postgres bash -c "createdb modadb" &&\
+sudo -u ubuntu psql -d modadb -c "CREATE TABLE modas ( 
    id SERIAL UNIQUE NOT NULL,
    user_id integer NOT NULL,
    data jsonb NOT NULL,
@@ -33,9 +35,9 @@ sudo -u ubuntu psql -d modadb -c "CREATE TABLE modas (
    date_added timestamp with time zone NOT NULL,
    collaborators jsonb,
    user_name text NOT NULL
-);"
+);" &&\
 
-sudo -u ubuntu psql -d modadb -c "CREATE TABLE users (
+sudo -u ubuntu psql -d modadb -c "CREATE TABLE users ( 
    id SERIAL UNIQUE NOT NULL,
    name text NOT NULL,
    email text NOT NULL,
