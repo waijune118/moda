@@ -11,7 +11,7 @@ sudo npm install -g pm2
 
 sudo apt-get autoremove -y
 
-git clone https://Jun:123456@data1.iwm.fraunhofer.de/gogs/suhail/moda-app.git
+
 
 root_url=""
 db_pass=123456
